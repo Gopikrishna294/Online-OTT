@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+           <th>SR</th>
+           <th>ID</th>
+           <th>Name</th>
+           <th>Price</th>
+           <th colspan="3">Action</th>
+        </tr>
+        {% for movie in movielist %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{movie.food_Id}}</td>
+            <td>{{movie.food_Name}}</td>
+            <td>{{movie.food_Price}}</td>
+            {% if request.user.is_staff %}
+            <td><a href="/moviereview/deletefood/{{movie.food_Id}}">Delete</a></td>
+            <td><a href="/moviereview/updatefood/{{movie.food_Id}}">Update</a></td>
+            {% endif %}
+            <td><a href="/moviereview/up/watch">Watch</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
